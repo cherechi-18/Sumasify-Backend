@@ -12,3 +12,9 @@ coverage/
 node_modules
 .postman/
 postman/globals
+test-db.js
+.agents
+.cursor
+.devin
+.claude
+src/generated/prisma
