@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SUMASIFY Google Test</title>
+</head>
+<body>
+  <h2>SUMASIFY Google Authentication Test</h2>
+
+  <div id="g_id_onload"
+       data-client_id="67520629219-nokvkb0pak8ni7fj1herjnuihg15d2d5.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse">
+  </div>
+
+  <div class="g_id_signin"></div>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <script>
+    function handleCredentialResponse(response) {
+      console.log("GOOGLE ID TOKEN:");
+      console.log(response.credential);
+
+      document.body.innerHTML += `
+        <h3>Copy this ID token:</h3>
+        <textarea style="width:100%;height:200px;">${response.credential}</textarea>
+      `;
+    }
+  </script>
+</body>
+</html>

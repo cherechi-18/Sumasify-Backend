@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
-import { env } from "../config/env.js";
-import { AppError } from "./utils/AppError.js";
+import { env } from "../../config/env.js";
+import { AppError } from "./AppError.js";
 import { findUserAccountStatusById } from "../../modules/auth/auth.model.js";
 
 export async function authenticate(req, res, next) {

@@ -42,7 +42,6 @@ async function main() {
     { name: "Beauty", slug: "beauty" },
     { name: "Accessories", slug: "accessories" },
     { name: "Books/Textbooks", slug: "books-textbooks" },
-    { name: "Services", slug: "services" },
     { name: "Other", slug: "other" },
   ];
 

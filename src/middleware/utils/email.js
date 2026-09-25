@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import dns from "node:dns/promises";
 
-import { env } from "../config/env.js";
+import { env } from "../../config/env.js";
 
 let cachedIp = null;
 

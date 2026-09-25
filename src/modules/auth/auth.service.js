@@ -385,7 +385,7 @@ export async function refreshUserSession(refreshToken, req) {
 
   if (!session) {
   throw new AppError(
-    "Invalid refresh token",
+    "Invalid or expired refresh token",
     401,
     "UNAUTHORIZED"
   );
@@ -393,7 +393,7 @@ export async function refreshUserSession(refreshToken, req) {
 
 if (session.revokedAt) {
   throw new AppError(
-    "Refresh token has been revoked",
+    "Invalid or expired refresh token",
     401,
     "UNAUTHORIZED"
   );
@@ -401,7 +401,7 @@ if (session.revokedAt) {
 
 if (session.expiresAt <= new Date()) {
   throw new AppError(
-    "Refresh token has expired",
+    "Invalid or expired refresh token",
     401,
     "UNAUTHORIZED"
   );
@@ -453,7 +453,7 @@ if (session.expiresAt <= new Date()) {
       err.code === "REFRESH_SESSION_EXPIRED"
     ) {
       throw new AppError(
-  "Invalid refresh token",
+  "Invalid or expired refresh token",
   401,
   "UNAUTHORIZED"
 );
