@@ -1,6 +1,10 @@
 import { ZodError } from "zod";
 
+import crypto from "node:crypto";
+
 export function errorHandler(err, req, res, next) {
+  const requestId = req.requestId || req.get("x-request-id") || crypto.randomUUID();
+
   // 1. Zod validation errors
   if (err instanceof ZodError) {
     return res.status(400).json({
@@ -11,6 +15,7 @@ export function errorHandler(err, req, res, next) {
           field: issue.path.join("."),
           message: issue.message,
         })),
+        requestId,
       },
     });
   }
@@ -22,6 +27,7 @@ export function errorHandler(err, req, res, next) {
         code: err.code,
         message: err.message,
         ...(err.fields && { fields: err.fields }),
+        requestId,
       },
     });
   }
@@ -33,6 +39,7 @@ export function errorHandler(err, req, res, next) {
     error: {
       code: "INTERNAL_SERVER_ERROR",
       message: "An unexpected error occurred",
+      requestId,
     },
   });
 }
