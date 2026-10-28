@@ -1,14 +1,8 @@
 import { asyncHandler } from "../../middleware/utils/asyncHandler.js";
 
-import {
-  orderListQuerySchema,
-  orderIdSchema,
-} from "./order.validation.js";
+import {orderListQuerySchema,orderIdSchema} from "./order.validation.js";
 
-import {
-  getBuyerOrders,
-  getOrderById,
-} from "./order.service.js";
+import {getBuyerOrders,getOrderById} from "./order.service.js";
 
 export const listOrders = asyncHandler(async (req, res) => {
   const filters = orderListQuerySchema.parse(req.query);
